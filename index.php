@@ -1,31 +1,34 @@
 <?php
 require_once 'Bicycle.php';
 require_once 'Car.php';
-$bike = new Bicycle('Green');
-$car1 = new Car('Red', 4, 'Gasol');
+require_once 'Truck.php';
 
-var_dump($car1);
+$car = new Car('green', 4, 'electric');
 
-echo $car1->start();
-echo $car1->forward();
-echo $car1->brake();
+echo $car->forward();
+var_dump($car);
+var_dump(Car::ALLOWED_ENERGIES);
 
-var_dump($car1);
+$myTruck = new Truck('blue', 'fuel', 50, 3);
+
+$myTruck->forward();
+$myTruck->getCurrentSpeed();
+$myTruck->setNbWheels(8);
+$myTruck->setLoading(40);
+echo $myTruck->loadingLevel();
+var_dump($myTruck);
+$myTruck->brake();
+var_dump($myTruck);
+
+$yourTruck = new Truck('golden', 'electric', 100, 1);
+
+$yourTruck->forward();
+$yourTruck->getCurrentSpeed();
+$yourTruck->setNbWheels(8);
+$yourTruck->setLoading(101);
+var_dump($yourTruck);
+echo $yourTruck->loadingLevel();
 
 
 
-$bike->setCurrentSpeed(100);
-// $bike->dump();
-
-
-
-
-
-// echo $bike->forward();
-// echo '<br> vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
-// echo $bike->brake();
-// echo '<br> vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
-// echo $bike->brake();
-// echo $bike->forward();
-// echo '<br> vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
 

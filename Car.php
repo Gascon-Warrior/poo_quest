@@ -1,59 +1,25 @@
 <?php
 
-class Car{
-    private int $nbWheels = 4;
-    private int $currentSpeed = 0;
-    private string $color;
-    private int $nbSeats;
+class Car extends Vehicle{
+
     private string $energy;   
+
     private int $energyLevel = 40;
+    // peut etre definie comme finale  en ajoutant le mot clef "final" au debut de la declaration de la constante de classe.
+    // ainsi la constant ne pourra pas etre redefinie par les calsse enfant.
+    public const ALLOWED_ENERGIES = [
+        'fuel',
+        'electric',
+    ];
 
     public function __construct($color, $nbSeats,$energy){
-        $this->color = $color;
-        $this->nbSeats = $nbSeats;
+       parent::__construct($color, $nbSeats);
         $this->energy = $energy;        
     }
-
-    public function forward(): string{
-        $this->currentSpeed = 40;
-        $this->energyLevel--;
-        return '<br> Vous roulez a '. $this->getCurrentSpeed().'km/h !!! <br> Chauffard!!';
-    }
-
-    public function brake(): string{
-
-        $sentence = "";
-        while ($this->currentSpeed > 0) {
-            $this->currentSpeed--;
-            $sentence .= "<br>Je freine !!! Votre vitesse est de " . $this->currentSpeed ." km/h !!";
-        }
-        $sentence .= "<br> Laissez moi descendre! Je ne monterais plus jamais avec vous!!";    
-        return $sentence;
-      
-    }
-
+    
     public function start(): string{       
         return 'Start !';
-    }
-
-    public function getNbWheels(): int{
-        return $this->nbWheels;
-    }
-    public function setNbWheels(int $nbWheels): int{
-        return $this->nbWheels = $nbWheels;
-    }
-
-    public function getCurrentSpeed(): int{
-        return $this->currentSpeed;
-    }
-
-    public function getColor(): string{
-        return $this->color;
-    }
-
-    public function getNbSeats(): int{
-        return $this->nbSeats;
-    }
+    } 
     public function getEnergy(): string{
         return $this->energy;
     }
