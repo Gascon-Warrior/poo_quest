@@ -1,4 +1,5 @@
 <?php
+require_once 'Vehicle.php';
 
 class Car extends Vehicle{
 
@@ -16,9 +17,11 @@ class Car extends Vehicle{
        parent::__construct($color, $nbSeats);
         $this->energy = $energy;        
     }
-    
+    public function changeWheel(): string{
+        return 'Changed !<br>' .  PHP_EOL;
+    }
     public function start(): string{       
-        return 'Start !';
+        return 'Start !' .  PHP_EOL;
     } 
     public function getEnergy(): string{
         return $this->energy;
